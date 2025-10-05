@@ -1,0 +1,1 @@
+body{font-family:system-ui,sans-serif;margin:2rem;line-height:1.4}header{margin-bottom:1rem}#metrics{margin-top:1rem;display:grid;gap:.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.metric{padding:.75rem;border:1px solid #ddd;border-radius:.5rem;background:#fafafa}.metric b{display:block;color:#005f99;margin-bottom:.25rem}
