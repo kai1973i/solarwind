@@ -2,12 +2,18 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Meine Vite-Seite</title>
+  <title>Solarwind - Aktivitätsindex</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hallo GitHub Pages 🚀</h1>
-  <p>Diese Seite wurde mit Vite gebaut und automatisch deployed.</p>
-  <script type="module" src="script.js"></script>
+  <header>
+    <h1>Solarwind - Echtzeitanalyse</h1>
+    <p>Quelle: NOAA SWPC 1‑Day Solar Wind (Mag und Plasma)</p>
+  </header>
+  <section>
+    <canvas id="chart" width="100"></canvas>
+    <div id="metrics"></div>
+  </section>
+  <script type="module" src="/main.js"></script>
 </body>
 </html>
