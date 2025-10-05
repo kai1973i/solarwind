@@ -20,10 +20,19 @@ export async function fetchMerged() {
     const [mag, plasma] = await Promise.all([fetchTable(MAG_URL), fetchTable(PLASMA_URL)]);
     const plasmaMap = new Map(plasma.map(p => [toIsoMinutes(p.time_tag), p]));
     const merged= [];
+
     for(const m of mag) {
         const key = toIsoMinutes(m.time_tag);
         const p = plasmaMap.get(key);
         if(!p) continue;
+
+        const speed = Number(p.speed);
+        const density = Number(p.density);
+
+        // Filtere unrealistische Werte heraus
+        if(speed <=0) continue;
+        if(density <=0) continue;
+
         merged.push({
             time: key,
             bx: Number(m.bx_gsm),
