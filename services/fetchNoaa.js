@@ -1,9 +1,9 @@
-const MAG_URL = 'https://services.swpc.noaa.gov/products/solar-wind/mag-1-day.json';
-const PLASMA_URL = 'https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json';
+const MAG_URL = 'https://services.swpc.noaa.gov/products/solar-wind/mag-6-hour.json';
+const PLASMA_URL = 'https://services.swpc.noaa.gov/products/solar-wind/plasma-6-hour.json';
 
 // Hilfsfunktion zum Abrufen und Parsen von JSON-Daten
 async function fetchTable(url) {
-    const res = await fetch(url, { cache: 'force-cache' });
+    const res = await fetch(url, { cache: 'no-cache' });
     if(!res.ok) throw new Error(`Fehler beim Laden der Daten von ${url}: ${res.status}`);
     const data = await res.json();
     const [headers, ...rows] = data;
@@ -12,7 +12,9 @@ async function fetchTable(url) {
 
 // Zeitstempel in lesbares Format umwandeln
 function toIsoMinutes(t) {
-    return new Date(t.replace(' ', 'T').replace('.000', 'Z')).toISOString().slice(0,16);
+    var _t = t.slice(0, 16).replace(' ', 'T');
+    //console.log(t, '->', _t);
+    return _t;
 }
 
 // Magnetfeld + Plasma Daten abrufen und kombinieren
